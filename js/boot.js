@@ -1,11 +1,10 @@
 var bootState = {
 
     create: function() {
+        game.physics.startSystem(Phaser.Physics.P2JS);
 
-        //Initial GameSystem (Arcade, P2, Ninja)
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.stage.disableVisibilityChange = true;
 
-        //Initial Load State
         game.state.start('load');
     }
 };

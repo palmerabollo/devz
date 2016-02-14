@@ -1,34 +1,26 @@
 var loadState = {
 
     preload: function() {
+        game.load.bitmapFont('desyrel', 'assets/fonts/desyrel.png', 'assets/fonts/desyrel.xml');
 
-        /*
-        Load all game assets
-        Place your load bar, some messages.
-        In this case of loading, only text is placed...
-        */
+        game.load.image('dev', 'assets/img/dev_48.png');
+        game.load.image('manager', 'assets/img/manager_48.png');
+        game.load.image('wall', 'assets/img/wall_48.png');
 
-        var loadingLabel = game.add.text(80, 150, 'Loading...', {font: '30px Courier', fill: '#fff'});
-
-        //Load your images, spritesheets, bitmaps...
-        game.load.image('splash', 'assets/img/dall.png');
-
-        //Load your sounds, efx, music...
-        // game.load.audio('background', 'assets/snd/rockas.wav');
+        // https://freesound.org/people/RutgerMuller/sounds/50736/
+        game.load.audio('collision', 'assets/snd/collision.wav');
 
         // http://www.opsound.org/artist/dhalius/
         game.load.audio('background', 'assets/snd/tremble.ogg');
 
-        //Load your data, JSON, Querys...
-        //Example: game.load.json('version', 'http://phaser.io/version.json');
+        game.load.json('maps', 'assets/maps/maps.json');
     },
 
     create: function() {
-        game.stage.setBackgroundColor('#000');
-        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        game.stage.setBackgroundColor('#0072bc');
 
-        music = game.sound.play('background');
+        // TODO music = game.sound.play('background');
 
-        game.state.start('menu');
+        game.state.start('game');
     }
 };
