@@ -42,6 +42,28 @@ var gameState = {
     wall.body.damping = DAMPING;
     wall.body.static = true;
 
+    wall.inputEnabled = true;
+    wall.input.enableDrag();
+
+    wall.events.onDragStart.add(dragStart);
+    wall.events.onDragUpdate.add(dragUpdate);
+    wall.events.onDragStop.add(dragStop);
+
+    var graphics;
+    function dragStart(sprite, pointer, dragX, dragY) {
+        graphics = game.add.graphics(0, 0);
+        graphics.lineStyle(6, 0x909090, 0.3);
+        graphics.drawCircle(sprite.x, sprite.y, 200);
+    }
+
+    function dragUpdate(sprite, pointer, dragX, dragY, snapPoint) {
+        // console.log(arguments);
+    }
+
+    function dragStop() {
+        graphics.kill();
+    }
+
     var collisionGroup = game.physics.p2.createCollisionGroup();
 
     dev1.body.setCollisionGroup(collisionGroup);
